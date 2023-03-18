@@ -1,8 +1,8 @@
-"""create db
+"""add User model
 
-Revision ID: 7c978838c2fb
+Revision ID: 7dc4cd113a62
 Revises:
-Create Date: 2023-02-25 15:52:34.955004
+Create Date: 2023-03-18 21:04:59.377176
 
 """
 import sqlalchemy as sa
@@ -10,7 +10,7 @@ from alembic import op
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = "7c978838c2fb"
+revision = "7dc4cd113a62"
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +25,7 @@ def upgrade() -> None:
         sa.Column("surname", sa.String(), nullable=False),
         sa.Column("email", sa.String(), nullable=False),
         sa.Column("is_active", sa.Boolean(), nullable=True),
+        sa.Column("hashed_password", sa.String(), nullable=False),
         sa.PrimaryKeyConstraint("user_id"),
         sa.UniqueConstraint("email"),
     )
