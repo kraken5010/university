@@ -8,10 +8,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.models import User
 
-###########################################################
-# BLOCK FOR INTERACTION WITH DATABASE IN BUSINESS CONTEXT #
-###########################################################
-
 
 class UserDAL:
     """Data Access Layer for operating user info"""
@@ -52,6 +48,7 @@ class UserDAL:
         query = select(User).where(User.email == email)
         res = await self.db_session.execute(query)
         user_row = res.fetchone()
+        print(f"[+]  INFO  FETCHONE RESULT {user_row[0]}")
         if user_row is not None:
             return user_row[0]
 
