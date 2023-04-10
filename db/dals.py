@@ -48,7 +48,6 @@ class UserDAL:
         query = select(User).where(User.email == email)
         res = await self.db_session.execute(query)
         user_row = res.fetchone()
-        print(f"[+]  INFO  FETCHONE RESULT {user_row[0]}")
         if user_row is not None:
             return user_row[0]
 
